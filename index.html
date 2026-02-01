@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💘</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      overflow: hidden;
+    }
+
+    .container, .celebrate {
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+    }
+
+    button {
+      font-size: 1.5rem;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background-color: #2ecc71;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #e74c3c;
+      color: white;
+      position: absolute;
+    }
+
+    .celebrate {
+      display: none;
+    }
+
+    .gif-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .gif-container img {
+      width: 200px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .gif-container img {
+        width: 150px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Question Page -->
+  <div class="container" id="questionPage">
+    <h1>Will you be my Valentine? 💖</h1>
+    <button id="yesBtn">YES ❤️</button>
+    <button id="noBtn">NO 💔</button>
+  </div>
+
+  <!-- Celebration Page -->
+  <div class="celebrate" id="celebratePage">
+    <h1>YAYYYY!!! 🎉💘</h1>
+    <p style="font-size: 1.6rem;">I knew you'd say YES 😍</p>
+
+    <div class="gif-container">
+      <img src="https://media.giphy.com/media/3oz8xAFtqoOUUrsh7W/giphy.gif" alt="Happy Dance">
+      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Love Hearts">
+      <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Cute Celebration">
+    </div>
+
+    <p style="font-size: 2rem; margin-top: 30px;">💐💖🥰🎊</p>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- JavaScript -->
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const questionPage = document.getElementById("questionPage");
+    const celebratePage = document.getElementById("celebratePage");
+    const bgMusic = document.getElementById("bgMusic");
+
+    // Move NO button randomly
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    // YES button click
+    yesBtn.addEventListener("click", () => {
+      questionPage.style.display = "none";
+      celebratePage.style.display = "block";
+
+      bgMusic.volume = 0.5;
+      bgMusic.play();
+    });
+  </script>
+
+</body>
+</html>
